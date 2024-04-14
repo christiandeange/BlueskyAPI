@@ -1,0 +1,33 @@
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - gradle/libs.versions.toml
+
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: "Checkout repo"
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: "Set version as envionment variable"
+        run: echo "LATEST_VERSION=$(awk -F\" '/sh.christian.ozone:bluesky/ { print $4 }' < gradle/libs.versions.toml)" >> $GITHUB_ENV
+
+      - name: "Update Package.swift"
+        run: ./update_version.sh ${{ env.LATEST_VERSION }}
+
+      - name: "Commit changes back to repo"
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Releasing v${{ env.LATEST_VERSION }}."
+          tagging_message: "${{ env.LATEST_VERSION }}"
+          file_pattern: "Package.swift"
