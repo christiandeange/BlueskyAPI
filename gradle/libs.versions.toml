@@ -1,2 +1,2 @@
 [libraries]
-bluesky = { module = "sh.christian.ozone:bluesky", version = "0.0.9" }
+bluesky = { module = "sh.christian.ozone:bluesky", version = "0.1.0" }
