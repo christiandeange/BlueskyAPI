@@ -1,8 +1,8 @@
 // swift-tools-version:5.3
 import PackageDescription
 
-let remoteKotlinUrl = "https://repo1.maven.org/maven2/sh/christian/ozone/bluesky-kmmbridge/0.1.0/bluesky-kmmbridge-0.1.0.zip"
-let remoteKotlinChecksum = "89b08c084f4312e7f5bd0a7036e0d0f494d76414c3f16dfdde967983c49deb05"
+let remoteKotlinUrl = "https://repo1.maven.org/maven2/sh/christian/ozone/bluesky-kmmbridge/0.2.0/bluesky-kmmbridge-0.2.0.zip"
+let remoteKotlinChecksum = "c3974e0f068b080184d47796b972ff89a70259c7483329e58df3c77e32c6ea64"
 let packageName = "BlueskyAPI"
 
 let package = Package(
